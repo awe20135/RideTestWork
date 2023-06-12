@@ -6,18 +6,19 @@ namespace RideTestWork.Scripts.Utility
 {
     public class TargetCamera : MonoBehaviour
     {
-        [SerializeField] private GameObject target;
+        [SerializeField] private GameObject _target;
+        [SerializeField] private bool fixedY;
 
         private Vector3 _previousTargetPosition;
 
         private void Start()
         {
-            _previousTargetPosition = target.transform.position;
+            _previousTargetPosition = _target.transform.position;
         }
 
         void Update()
         {
-            Vector3 currentTargetPosition = target.transform.position;
+            Vector3 currentTargetPosition = _target.transform.position;
 
             MoveToTarget(currentTargetPosition - _previousTargetPosition);
             _previousTargetPosition = currentTargetPosition;
@@ -25,6 +26,9 @@ namespace RideTestWork.Scripts.Utility
 
         private void MoveToTarget(Vector3 targetPosition)
         {
+            if(fixedY)
+                targetPosition.y = 0;
+
             transform.position += targetPosition;
         }
     }
