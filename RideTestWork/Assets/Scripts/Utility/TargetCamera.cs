@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace RideTestWork.Scripts.Utility
+namespace Assets.Scripts.Utility
 {
     public class TargetCamera : MonoBehaviour
     {
